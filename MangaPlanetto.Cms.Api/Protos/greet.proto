@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "MangaPlanetto.Cms";
+option csharp_namespace = "MangaPlanetto.Cms.Api";
 
 package greet;
 

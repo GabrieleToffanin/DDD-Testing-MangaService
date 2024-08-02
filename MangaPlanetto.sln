@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms.Api", "MangaPlanetto.Cms\MangaPlanetto.Cms.Api.csproj", "{8171DA1B-6697-48FF-ACB5-43D5F16D60CE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.AppHost", "MangaPlanetto.AppHost\MangaPlanetto.AppHost.csproj", "{2192A3FF-C615-4BA8-93B6-87551613E80E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.ServiceDefaults", "MangaPlanetto.ServiceDefaults\MangaPlanetto.ServiceDefaults.csproj", "{4FD912DB-B1A9-4E30-8355-3364EE06AD1F}"
@@ -19,16 +17,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.Application", "MangaPlanetto.Cms.Application\MangaPlanetto.Cms.Application.csproj", "{220658B5-8617-4FA8-BD33-4707A71F7C69}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms.Api", "MangaPlanetto.Cms.Api\MangaPlanetto.Cms.Api.csproj", "{7954BA04-A499-45F3-A071-756BB33224B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BFF71B06-4AF1-45D8-85FB-8DC55FC244A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.IntegrationTests", "MangaPlanetto.Cms.IntegrationTests\MangaPlanetto.Cms.IntegrationTests.csproj", "{D6D29E18-E7E2-4819-B8F1-E413A9757FE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8171DA1B-6697-48FF-ACB5-43D5F16D60CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8171DA1B-6697-48FF-ACB5-43D5F16D60CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8171DA1B-6697-48FF-ACB5-43D5F16D60CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8171DA1B-6697-48FF-ACB5-43D5F16D60CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2192A3FF-C615-4BA8-93B6-87551613E80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2192A3FF-C615-4BA8-93B6-87551613E80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2192A3FF-C615-4BA8-93B6-87551613E80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,17 +49,27 @@ Global
 		{220658B5-8617-4FA8-BD33-4707A71F7C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{220658B5-8617-4FA8-BD33-4707A71F7C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{220658B5-8617-4FA8-BD33-4707A71F7C69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7954BA04-A499-45F3-A071-756BB33224B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7954BA04-A499-45F3-A071-756BB33224B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7954BA04-A499-45F3-A071-756BB33224B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7954BA04-A499-45F3-A071-756BB33224B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6D29E18-E7E2-4819-B8F1-E413A9757FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D29E18-E7E2-4819-B8F1-E413A9757FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D29E18-E7E2-4819-B8F1-E413A9757FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6D29E18-E7E2-4819-B8F1-E413A9757FE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8171DA1B-6697-48FF-ACB5-43D5F16D60CE} = {85364D33-6409-417C-B572-081A3F670DFA}
 		{2192A3FF-C615-4BA8-93B6-87551613E80E} = {C753B631-18E6-4958-AF19-11E65005EB5E}
 		{4FD912DB-B1A9-4E30-8355-3364EE06AD1F} = {C753B631-18E6-4958-AF19-11E65005EB5E}
 		{B9B713AE-09D5-4DA6-969D-88AB502C575A} = {85364D33-6409-417C-B572-081A3F670DFA}
 		{C8888B9D-A2DD-476C-BA40-9356CEDC111F} = {85364D33-6409-417C-B572-081A3F670DFA}
 		{220658B5-8617-4FA8-BD33-4707A71F7C69} = {85364D33-6409-417C-B572-081A3F670DFA}
+		{7954BA04-A499-45F3-A071-756BB33224B2} = {85364D33-6409-417C-B572-081A3F670DFA}
+		{BFF71B06-4AF1-45D8-85FB-8DC55FC244A5} = {85364D33-6409-417C-B572-081A3F670DFA}
+		{D6D29E18-E7E2-4819-B8F1-E413A9757FE5} = {BFF71B06-4AF1-45D8-85FB-8DC55FC244A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F4C12CF-2610-4BC1-A601-9099685A5215}

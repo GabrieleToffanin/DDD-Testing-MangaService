@@ -1,5 +1,5 @@
 using Grpc.Core;
-using MangaPlanetto.Cms;
+using MangaPlanetto.Cms.Api;
 
 namespace MangaPlanetto.Cms.Services;
 
