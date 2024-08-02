@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MangaPlanetto.Cms\MangaPlanetto.Cms.csproj" />
+    <ProjectReference Include="..\MangaPlanetto.Cms\MangaPlanetto.Cms.Api.csproj" />
   </ItemGroup>
 
 </Project>

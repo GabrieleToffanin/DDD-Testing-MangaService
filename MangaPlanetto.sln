@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms", "MangaPlanetto.Cms\MangaPlanetto.Cms.csproj", "{8171DA1B-6697-48FF-ACB5-43D5F16D60CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms.Api", "MangaPlanetto.Cms\MangaPlanetto.Cms.Api.csproj", "{8171DA1B-6697-48FF-ACB5-43D5F16D60CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.AppHost", "MangaPlanetto.AppHost\MangaPlanetto.AppHost.csproj", "{2192A3FF-C615-4BA8-93B6-87551613E80E}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.Infrastructure", "MangaPlanetto.Cms.Infrastructure\MangaPlanetto.Cms.Infrastructure.csproj", "{B9B713AE-09D5-4DA6-969D-88AB502C575A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.Domain", "MangaPlanetto.Cms.Domain\MangaPlanetto.Cms.Domain.csproj", "{C8888B9D-A2DD-476C-BA40-9356CEDC111F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.Application", "MangaPlanetto.Cms.Application\MangaPlanetto.Cms.Application.csproj", "{220658B5-8617-4FA8-BD33-4707A71F7C69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{C8888B9D-A2DD-476C-BA40-9356CEDC111F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8888B9D-A2DD-476C-BA40-9356CEDC111F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8888B9D-A2DD-476C-BA40-9356CEDC111F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{220658B5-8617-4FA8-BD33-4707A71F7C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{220658B5-8617-4FA8-BD33-4707A71F7C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{220658B5-8617-4FA8-BD33-4707A71F7C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{220658B5-8617-4FA8-BD33-4707A71F7C69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{4FD912DB-B1A9-4E30-8355-3364EE06AD1F} = {C753B631-18E6-4958-AF19-11E65005EB5E}
 		{B9B713AE-09D5-4DA6-969D-88AB502C575A} = {85364D33-6409-417C-B572-081A3F670DFA}
 		{C8888B9D-A2DD-476C-BA40-9356CEDC111F} = {85364D33-6409-417C-B572-081A3F670DFA}
+		{220658B5-8617-4FA8-BD33-4707A71F7C69} = {85364D33-6409-417C-B572-081A3F670DFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F4C12CF-2610-4BC1-A601-9099685A5215}

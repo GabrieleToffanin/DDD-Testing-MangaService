@@ -1,4 +1,4 @@
-﻿using MangaPlanetto.Cms.Domain.Exceptions.Currency;
+﻿using MangaPlanetto.Cms.Domain.Exceptions.Price;
 
 namespace MangaPlanetto.Cms.Domain.ValueObjects;
 
@@ -17,13 +17,15 @@ public sealed record Price
         string currency,
         decimal value)
     {
+        InvalidPriceException.ThrowIfLessThanZero(value);
+
         return new Price(currency, value);
     }
 
     private Currency GetCurrencyFromString(string currency) => currency switch
     {
         "USD" => Currency.USD,
-        _ => throw new InvalidCurrencyException(currency)
+        _ => InvalidCurrencyException.ThrowWhenUnknownCurrency(currency)
     };
 
     public enum Currency

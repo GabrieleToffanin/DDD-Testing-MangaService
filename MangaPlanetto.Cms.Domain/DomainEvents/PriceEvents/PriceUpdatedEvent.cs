@@ -3,6 +3,10 @@ using MangaPlanetto.Cms.Domain.Entities.Mangas;
 using MangaPlanetto.Cms.Domain.ValueObjects;
 
 namespace MangaPlanetto.Cms.Domain.DomainEvents.PriceEvents;
+
+/// <summary>
+/// Event for when the price gets updated.
+/// </summary>
 public sealed class PriceUpdatedEvent : IDomainEvent
 {
     public MangaId MangaId { get; private set; }
