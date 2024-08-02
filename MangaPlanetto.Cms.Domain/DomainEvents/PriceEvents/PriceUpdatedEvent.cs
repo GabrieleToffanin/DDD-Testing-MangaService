@@ -1,25 +1,17 @@
-﻿using MangaPlanetto.Cms.Domain.Common;
-using MangaPlanetto.Cms.Domain.Entities.Mangas;
-using MangaPlanetto.Cms.Domain.ValueObjects;
+﻿using MangaPlanetto.Cms.Domain.Entities.Mangas;
 
 namespace MangaPlanetto.Cms.Domain.DomainEvents.PriceEvents;
 
-/// <summary>
-/// Event for when the price gets updated.
-/// </summary>
-public sealed class PriceUpdatedEvent : IDomainEvent
+public record PriceUpdatedEvent
 {
-    public MangaId MangaId { get; private set; }
-    public Price OldPrice { get; private set; }
-    public Price NewPrice { get; private set; }
+    public Guid DomainEventId { get; }
+    public MangaId MangaId { get; }
 
     public PriceUpdatedEvent(
-        MangaId mangaId,
-        Price oldPrice,
-        Price newPrice)
+        Guid domainEventId,
+        MangaId mangaId)
     {
+        this.DomainEventId = domainEventId;
         this.MangaId = mangaId;
-        this.OldPrice = oldPrice;
-        this.NewPrice = newPrice;
     }
 }

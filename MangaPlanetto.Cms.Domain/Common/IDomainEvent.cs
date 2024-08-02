@@ -1,4 +1,8 @@
-﻿namespace MangaPlanetto.Cms.Domain.Common;
-public interface IDomainEvent
+﻿using MediatR;
+
+namespace MangaPlanetto.Cms.Domain.Common;
+
+public interface IDomainEvent : INotification
 {
+    public Guid Id { get; }
 }

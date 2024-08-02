@@ -1,10 +1,13 @@
-﻿using MangaPlanetto.Cms.Services;
+﻿using MangaPlanetto.Cms.Infrastructure.DependencyInjection;
+using MangaPlanetto.Cms.Services;
 
 public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddMediator();
         services.AddGrpc();
+        services.AddEventPublisher();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

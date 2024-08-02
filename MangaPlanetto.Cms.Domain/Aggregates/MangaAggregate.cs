@@ -50,7 +50,7 @@ public sealed class MangaAggregate
         var oldPrice = this.Price;
         this.Price = newPrice;
 
-        PriceUpdatedEvent priceUpdatedEvent =
+        PriceUpdatedDomainEvent priceUpdatedEvent =
             new(this.Manga.Id, oldPrice, newPrice);
 
         this._domainEvents.Add(priceUpdatedEvent);
