@@ -13,15 +13,23 @@ public sealed class GreetingsServiceIntegrationTest(
     [Fact]
     public async Task SayHelloUnaryTest()
     {
-        Greeter.GreeterClient client = new(this.Channel);
+        Manga.MangaClient client = new(this.Channel);
 
-        HelloRequest helloRequest = new()
+        string mangaId = Guid.NewGuid().ToString();
+
+        UpdateMangaPriceRequest updatePrice = new()
         {
-            Name = "Gabriele"
+            MangaId = mangaId,
+            Price = new()
+            {
+                Currency = "USD",
+                Amount = 10.0F,
+            },
         };
 
-        HelloReply test = await client.SayHelloAsync(helloRequest);
+        UpdatedMangaResponse test =
+            await client.UpdateMangaPriceAsync(updatePrice);
 
-        Assert.Equal("Hello Gabriele", test.Message);
+        Assert.Equal(mangaId, test.MangaId);
     }
 }

@@ -5,7 +5,9 @@ namespace MangaPlanetto.Cms.Domain.Repositories;
 
 public interface IMangaRepository
 {
-    Task<MangaId> UpdateMangaPrice(
+    Task<Manga> GetByIdAsync(MangaId id);
+
+    Task<MangaId> UpdateMangaPriceAsync(
         Price price,
         CancellationToken cancellationToken);
 }

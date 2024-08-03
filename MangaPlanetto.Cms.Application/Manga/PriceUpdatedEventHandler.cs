@@ -12,7 +12,7 @@ public sealed class PriceUpdatedEventHandler(
 {
     public async Task Handle(PriceUpdatedDomainEvent notification, CancellationToken cancellationToken)
     {
-        var mangaId = await mangaRepository.UpdateMangaPrice(notification.NewPrice, cancellationToken);
+        var mangaId = await mangaRepository.UpdateMangaPriceAsync(notification.NewPrice, cancellationToken);
 
         PriceUpdatedEvent priceUpdatedEvent = new(notification.Id, mangaId);
 

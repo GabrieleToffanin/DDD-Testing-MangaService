@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "MangaPlanetto.Cms.Api";
+
+package manga;
+
+service Manga{
+	rpc GetManga(GetMangaRequest) returns (GetMangaResponse);
+	rpc UpdateMangaPrice(UpdateMangaPriceRequest) returns (UpdatedMangaResponse);
+} 
+
+message GetMangaRequest{
+	string manga_id = 1;
+}
+
+message GetMangaResponse{
+	string manga_id = 1;
+	string title = 2;
+	GrpcPrice price = 3;
+}
+
+message UpdateMangaPriceRequest{
+	string manga_id = 1;
+	GrpcPrice price = 2;
+}
+
+message UpdatedMangaResponse{
+	string manga_id = 1;
+}
+
+message GrpcPrice{
+	float amount = 1;
+	string currency = 2;
+}

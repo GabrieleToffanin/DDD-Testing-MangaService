@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.AppHost", "MangaPlanetto.AppHost\MangaPlanetto.AppHost.csproj", "{2192A3FF-C615-4BA8-93B6-87551613E80E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.AppHost", "MangaPlanetto.AppHost\MangaPlanetto.AppHost.csproj", "{2192A3FF-C615-4BA8-93B6-87551613E80E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.ServiceDefaults", "MangaPlanetto.ServiceDefaults\MangaPlanetto.ServiceDefaults.csproj", "{4FD912DB-B1A9-4E30-8355-3364EE06AD1F}"
 EndProject
@@ -11,17 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CentralizedHost", "Centrali
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContentManagementService", "ContentManagementService", "{85364D33-6409-417C-B572-081A3F670DFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.Infrastructure", "MangaPlanetto.Cms.Infrastructure\MangaPlanetto.Cms.Infrastructure.csproj", "{B9B713AE-09D5-4DA6-969D-88AB502C575A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms.Infrastructure", "MangaPlanetto.Cms.Infrastructure\MangaPlanetto.Cms.Infrastructure.csproj", "{B9B713AE-09D5-4DA6-969D-88AB502C575A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.Domain", "MangaPlanetto.Cms.Domain\MangaPlanetto.Cms.Domain.csproj", "{C8888B9D-A2DD-476C-BA40-9356CEDC111F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms.Domain", "MangaPlanetto.Cms.Domain\MangaPlanetto.Cms.Domain.csproj", "{C8888B9D-A2DD-476C-BA40-9356CEDC111F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.Application", "MangaPlanetto.Cms.Application\MangaPlanetto.Cms.Application.csproj", "{220658B5-8617-4FA8-BD33-4707A71F7C69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms.Application", "MangaPlanetto.Cms.Application\MangaPlanetto.Cms.Application.csproj", "{220658B5-8617-4FA8-BD33-4707A71F7C69}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms.Api", "MangaPlanetto.Cms.Api\MangaPlanetto.Cms.Api.csproj", "{7954BA04-A499-45F3-A071-756BB33224B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BFF71B06-4AF1-45D8-85FB-8DC55FC244A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaPlanetto.Cms.IntegrationTests", "MangaPlanetto.Cms.IntegrationTests\MangaPlanetto.Cms.IntegrationTests.csproj", "{D6D29E18-E7E2-4819-B8F1-E413A9757FE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaPlanetto.Cms.IntegrationTests", "MangaPlanetto.Cms.IntegrationTests\MangaPlanetto.Cms.IntegrationTests.csproj", "{D6D29E18-E7E2-4819-B8F1-E413A9757FE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
