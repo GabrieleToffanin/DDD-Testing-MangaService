@@ -9,11 +9,13 @@ namespace MangaPlanetto.Cms.Domain.DomainEvents.PriceEvents;
 /// </summary>
 public record PriceUpdatedDomainEvent : IDomainEvent
 {
-    public MangaId MangaId { get; private set; }
-    public Price OldPrice { get; private set; }
-    public Price NewPrice { get; private set; }
+    public MangaId MangaId { get; }
+    public Price OldPrice { get; }
+    public Price NewPrice { get; }
 
     public Guid Id { get; }
+
+    public DateTime OccurredOn { get; }
 
     public PriceUpdatedDomainEvent(
         MangaId mangaId,
@@ -24,5 +26,6 @@ public record PriceUpdatedDomainEvent : IDomainEvent
         this.MangaId = mangaId;
         this.OldPrice = oldPrice;
         this.NewPrice = newPrice;
+        this.OccurredOn = DateTime.UtcNow;
     }
 }
