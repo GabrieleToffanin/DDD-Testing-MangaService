@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MangaPlanetto.Cms.Infrastructure\MangaPlanetto.Cms.Infrastructure.csproj" />
+    <ProjectReference Include="..\MangaPlanetto.ServiceDefaults\MangaPlanetto.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>
