@@ -1,11 +1,13 @@
+using MangaPlanetto.Cms.Api.Interceptors;
 using MangaPlanetto.Cms.Api.Services;
 using MangaPlanetto.Cms.Application.Manga;
 using MangaPlanetto.Cms.Infrastructure.DependencyInjection;
 using MangaPlanetto.ServiceDefaults;
+using Microsoft.OpenApi.Models;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +15,15 @@ internal class Program
 
         // Configura i servizi
         builder.Services.AddEventPublisher();
-        builder.Services.AddMediator(typeof(PriceUpdatedEventHandler).Assembly);
-        builder.Services.AddGrpc();
+        builder.Services.AddMediator(typeof(PriceUpdatedDomainEventHandler).Assembly);
+        builder.Services.AddGrpc(
+            config =>
+            {
+                config.EnableDetailedErrors = true;
+                config.Interceptors.Add<GrpcExceptionInterceptor>();
+            }).AddJsonTranscoding();
+
+        ConfigureSwagger(builder.Services);
 
         var app = builder.Build();
 
@@ -23,6 +32,13 @@ internal class Program
             app.UseDeveloperExceptionPage();
 
         app.UseRouting();
+
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        });
+
         app.MapGrpcService<MangaService>();
 
         app.MapGet("/", context =>
@@ -31,5 +47,21 @@ internal class Program
         });
 
         app.Run();
+    }
+
+    private static IServiceCollection ConfigureSwagger(IServiceCollection services)
+    {
+        services.AddGrpcSwagger();
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1",
+                new OpenApiInfo { Title = "gRPC transcoding", Version = "v1" });
+
+            string filePath = Path.Combine(System.AppContext.BaseDirectory, "MangaPlanetto.Cms.Api.xml");
+            c.IncludeXmlComments(filePath);
+            c.IncludeGrpcXmlComments(filePath, includeControllerXmlComments: true);
+        });
+
+        return services;
     }
 }

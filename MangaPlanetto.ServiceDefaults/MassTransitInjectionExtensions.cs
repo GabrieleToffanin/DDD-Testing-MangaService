@@ -18,7 +18,7 @@ public static class MassTransitInjectionExtensions
             {
                 var configService = context.GetRequiredService<IConfiguration>();
                 string connectionString = configService.GetConnectionString("rabbitmq")!;
-                cfg.Host(connectionString);
+                cfg.Host(connectionString ?? string.Empty);
 
                 rabbitConfig(ctx, cfg);
             });

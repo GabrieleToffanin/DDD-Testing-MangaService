@@ -1,12 +1,25 @@
 syntax = "proto3";
 
 option csharp_namespace = "MangaPlanetto.Cms.Api";
+import "google/api/annotations.proto";
 
 package manga;
 
+//My amazing fantastic TestMangaService
 service Manga{
-	rpc GetManga(GetMangaRequest) returns (GetMangaResponse);
-	rpc UpdateMangaPrice(UpdateMangaPriceRequest) returns (UpdatedMangaResponse);
+	rpc GetManga(GetMangaRequest) returns (GetMangaResponse)
+	{
+		option (google.api.http) = {
+		  get: "/v1/manga/{manga_id}"
+		};
+	}
+	rpc UpdateMangaPrice(UpdateMangaPriceRequest) returns (UpdatedMangaResponse)
+	{
+		option (google.api.http) = {
+		  post: "/v1/manga"
+		  body: "*"
+		};
+	}
 } 
 
 message GetMangaRequest{
