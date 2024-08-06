@@ -1,6 +1,7 @@
 ﻿
 using Grpc.Core;
-using MangaPlanetto.Cms.Application.Manga;
+using MangaPlanetto.Cms.Application.MangaUseCases.MangaCreation;
+using MangaPlanetto.Cms.Application.MangaUseCases.MangaUpdating;
 using MangaPlanetto.Cms.Domain.Entities.Mangas;
 using MediatR;
 
@@ -51,6 +52,29 @@ public class MangaService(
         MangaId result = await this._mediator.Send(updateCommand, context.CancellationToken);
 
         UpdatedMangaResponse response = new()
+        {
+            MangaId = result.ToString(),
+        };
+
+        return response;
+    }
+
+    /// <summary>
+    /// Creates a manga.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    public override async Task<MangaCreatedResponse> CreateManga(CreateMangaRequest request, ServerCallContext context)
+    {
+        CreateMangaCommand createMangaCommand = new(
+            request.Title,
+            request.Price.Currency,
+            (decimal)request.Price.Amount);
+
+        MangaId result = await this._mediator.Send(createMangaCommand, context.CancellationToken);
+
+        MangaCreatedResponse response = new()
         {
             MangaId = result.ToString(),
         };

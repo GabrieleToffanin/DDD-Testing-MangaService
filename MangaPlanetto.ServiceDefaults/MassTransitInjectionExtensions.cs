@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MangaPlanetto.Cms.Infrastructure.DependencyInjection;
+namespace MangaPlanetto.ServiceDefaults;
 public static class MassTransitInjectionExtensions
 {
     public static IServiceCollection AddMassTransitWithRabbit(
@@ -19,6 +19,10 @@ public static class MassTransitInjectionExtensions
                 var configService = context.GetRequiredService<IConfiguration>();
                 string connectionString = configService.GetConnectionString("rabbitmq")!;
                 cfg.Host(connectionString ?? string.Empty);
+
+                //"amqp://guest:1bqMUY72jFjP3E19tUUZ4x@localhost:57229"
+
+
 
                 rabbitConfig(ctx, cfg);
             });

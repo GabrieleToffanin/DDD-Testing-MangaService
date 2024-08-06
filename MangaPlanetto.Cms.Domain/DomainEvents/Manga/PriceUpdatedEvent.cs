@@ -1,6 +1,6 @@
 ﻿using MangaPlanetto.Cms.Domain.Entities.Mangas;
 
-namespace MangaPlanetto.Cms.Domain.DomainEvents.PriceEvents;
+namespace MangaPlanetto.Cms.Domain.DomainEvents.Manga;
 
 public record PriceUpdatedEvent
 {

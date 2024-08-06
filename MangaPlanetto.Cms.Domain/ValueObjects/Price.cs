@@ -7,6 +7,11 @@ public sealed record Price
     public Currency CurrencyValue { get; private set; }
     public decimal Value { get; private set; }
 
+    public Price()
+    {
+
+    }
+
     public Price(string currency, decimal value)
     {
         this.CurrencyValue = this.GetCurrencyFromString(currency);

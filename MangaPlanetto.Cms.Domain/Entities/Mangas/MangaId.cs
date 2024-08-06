@@ -28,4 +28,6 @@ public sealed record MangaId
 
         return new MangaId(guid);
     }
+
+    public static MangaId FastCreate(Guid id) => new MangaId(id);
 }

@@ -7,8 +7,8 @@ namespace MangaPlanetto.Cms.Infrastructure.Messaging;
 /// Adapter implementation for the amqp event publisher.
 /// </summary>
 /// <param name="busControl">Control from MassTransit library</param>
-internal sealed class EventPublisher(
-    IBusControl busControl) : IEventPublisher
+public sealed class EventPublisher(
+    IBusControl busControl) : IEvP
 {
     private readonly IBusControl _busControl = busControl;
 

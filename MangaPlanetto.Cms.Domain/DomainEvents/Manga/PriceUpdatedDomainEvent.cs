@@ -2,7 +2,7 @@
 using MangaPlanetto.Cms.Domain.Entities.Mangas;
 using MangaPlanetto.Cms.Domain.ValueObjects;
 
-namespace MangaPlanetto.Cms.Domain.DomainEvents.PriceEvents;
+namespace MangaPlanetto.Cms.Domain.DomainEvents.Manga;
 
 /// <summary>
 /// Event for when the price gets updated.

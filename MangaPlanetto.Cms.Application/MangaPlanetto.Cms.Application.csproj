@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MangaPlanetto.Cms.Domain\MangaPlanetto.Cms.Domain.csproj" />
+    <ProjectReference Include="..\MangaPlanetto.Cms.Infrastructure\MangaPlanetto.Cms.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

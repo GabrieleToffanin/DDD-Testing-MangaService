@@ -13,10 +13,17 @@ service Manga{
 		  get: "/v1/manga/{manga_id}"
 		};
 	}
+	rpc CreateManga(CreateMangaRequest) returns (MangaCreatedResponse)
+	{
+		option (google.api.http) = {
+		  post: "/v1/updatemangaprice"
+		  body: "*"
+		};
+	}
 	rpc UpdateMangaPrice(UpdateMangaPriceRequest) returns (UpdatedMangaResponse)
 	{
 		option (google.api.http) = {
-		  post: "/v1/manga"
+		  post: "/v1/createmanga"
 		  body: "*"
 		};
 	}
@@ -30,6 +37,15 @@ message GetMangaResponse{
 	string manga_id = 1;
 	string title = 2;
 	GrpcPrice price = 3;
+}
+
+message CreateMangaRequest{
+	string title = 1;
+	GrpcPrice price = 2;
+}
+
+message MangaCreatedResponse{
+	string manga_id = 1;
 }
 
 message UpdateMangaPriceRequest{

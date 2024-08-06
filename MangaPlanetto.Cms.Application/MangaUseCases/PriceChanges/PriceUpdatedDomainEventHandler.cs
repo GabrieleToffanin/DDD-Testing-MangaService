@@ -1,9 +1,9 @@
-﻿using MangaPlanetto.Cms.Domain.DomainEvents.PriceEvents;
+﻿using MangaPlanetto.Cms.Domain.DomainEvents.Manga;
 using MangaPlanetto.Cms.Domain.Entities.Mangas;
 using MassTransit;
 using MediatR;
 
-namespace MangaPlanetto.Cms.Application.Manga;
+namespace MangaPlanetto.Cms.Application.MangaUseCases.PriceChanges;
 
 public sealed class PriceUpdatedDomainEventHandler(
     IBus bus) :
@@ -17,6 +17,6 @@ public sealed class PriceUpdatedDomainEventHandler(
 
         PriceUpdatedEvent priceUpdatedEvent = new(notification.Id, MangaId.CreateMangaId());
 
-        await this._bus.Publish(priceUpdatedEvent, cancellationToken);
+        await _bus.Publish(priceUpdatedEvent, cancellationToken);
     }
 }

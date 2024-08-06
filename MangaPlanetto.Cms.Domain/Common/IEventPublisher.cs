@@ -1,6 +1,6 @@
 ﻿namespace MangaPlanetto.Cms.Domain.Common;
 
-public interface IEventPublisher
+public interface IEvP
 {
     Task Publish<TEvent>(
         TEvent @event,

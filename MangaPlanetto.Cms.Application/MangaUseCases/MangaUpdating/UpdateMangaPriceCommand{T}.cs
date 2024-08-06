@@ -1,7 +1,7 @@
 ﻿using MangaPlanetto.Cms.Application.CommandQuery.Abstractions;
 using MangaPlanetto.Cms.Domain.Entities.Mangas;
 
-namespace MangaPlanetto.Cms.Application.Manga;
+namespace MangaPlanetto.Cms.Application.MangaUseCases.MangaUpdating;
 
 public class UpdateMangaPriceCommand : ICommand<MangaId>
 {
@@ -10,9 +10,9 @@ public class UpdateMangaPriceCommand : ICommand<MangaId>
         string currency,
         decimal value)
     {
-        MangaId = mangaId;
-        Currency = currency;
-        Value = value;
+        this.MangaId = mangaId;
+        this.Currency = currency;
+        this.Value = value;
     }
 
     public MangaId MangaId { get; }

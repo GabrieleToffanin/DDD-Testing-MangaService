@@ -1,5 +1,5 @@
 ﻿using MangaPlanetto.Cms.Domain.Common;
-using MangaPlanetto.Cms.Domain.DomainEvents.PriceEvents;
+using MangaPlanetto.Cms.Domain.DomainEvents.Manga;
 using MangaPlanetto.Cms.Domain.ValueObjects;
 
 namespace MangaPlanetto.Cms.Domain.Entities.Mangas;
@@ -9,18 +9,10 @@ namespace MangaPlanetto.Cms.Domain.Entities.Mangas;
 /// </summary>
 public sealed class Manga : AggregateRoot<MangaId>
 {
-    private Manga(
-        MangaId id,
-        string title,
-        Price price)
+    private Manga(MangaId id)
         : base(id)
     {
-        this.Id = id;
-        this.Title = title;
-        this.Price = price;
     }
-
-    public MangaId Id { get; internal set; }
 
     public string Title { get; internal set; }
 
@@ -38,9 +30,11 @@ public sealed class Manga : AggregateRoot<MangaId>
             value);
 
         Manga manga = new(
-            MangaId.CreateMangaId(),
-            title,
-            price);
+            MangaId.CreateMangaId())
+        {
+            Title = title,
+            Price = price
+        };
 
         return manga;
     }
@@ -49,8 +43,14 @@ public sealed class Manga : AggregateRoot<MangaId>
     /// Given a new price, updates the current price.
     /// </summary>
     /// <param name="newPrice">Incoming price change.</param>
-    public void UpdatePrice(Price newPrice)
+    public void UpdatePrice(
+        string currency,
+        decimal value)
     {
+        Price newPrice = Price.CreatePrice(
+            currency,
+            value);
+
         Price oldPrice = this.Price;
         this.Price = newPrice;
 
