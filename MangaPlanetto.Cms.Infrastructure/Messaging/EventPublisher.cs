@@ -8,7 +8,7 @@ namespace MangaPlanetto.Cms.Infrastructure.Messaging;
 /// </summary>
 /// <param name="busControl">Control from MassTransit library</param>
 public sealed class EventPublisher(
-    IBusControl busControl) : IEvP
+    IBusControl busControl) : IEventPublisher
 {
     private readonly IBusControl _busControl = busControl;
 

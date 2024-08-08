@@ -1,17 +1,25 @@
 ﻿using MangaPlanetto.Cms.Application.CommandQuery.Abstractions;
 using MangaPlanetto.Cms.Domain.Entities.Mangas;
-using MangaPlanetto.Cms.Infrastructure.DatabaseContext;
+using MangaPlanetto.Cms.Domain.Repositories;
 
 namespace MangaPlanetto.Cms.Application.MangaUseCases.MangaCreation;
 public sealed class CreateMangaCommandHandler(
-    MangaContext mangaContext) : ICommandHandler<CreateMangaCommand, MangaId>
+    IMangaRepository mangaRepository) : ICommandHandler<CreateMangaCommand, MangaId>
 {
+    private readonly IMangaRepository _mangaRepository = mangaRepository;
+
     public async Task<MangaId> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
     {
-        var result = await mangaContext.Mangas.AddAsync(Manga.CreateManga(request.title, request.currency, request.value));
+        Manga toBeCreated = Manga.CreateManga(
+            request.title,
+            request.currency,
+            request.value);
 
-        await mangaContext.SaveChangesAsync(cancellationToken);
+        MangaId result = await this._mangaRepository
+            .CreateMangaAsync(toBeCreated, cancellationToken);
 
-        return result.Entity.Id;
+        await this._mangaRepository.SaveMangaChangesAsync(cancellationToken);
+
+        return result;
     }
 }

@@ -1,10 +1,9 @@
 using MangaPlanetto.Cms.Api.Interceptors;
 using MangaPlanetto.Cms.Api.Services;
 using MangaPlanetto.Cms.Application.MangaUseCases.PriceChanges;
-using MangaPlanetto.Cms.Domain.Common;
+using MangaPlanetto.Cms.Infrastructure;
 using MangaPlanetto.Cms.Infrastructure.DatabaseContext;
 using MangaPlanetto.Cms.Infrastructure.DependencyInjection;
-using MangaPlanetto.Cms.Infrastructure.Messaging;
 using MangaPlanetto.ServiceDefaults;
 using Microsoft.OpenApi.Models;
 
@@ -15,19 +14,18 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.AddServiceDefaults();
-        builder.Services.AddEventPublisher();
         builder.AddCosmosDbContext<MangaContext>("CosmosConnection", "MangaDatabase");
 
-        // Configura i servizi
+        builder.Services.AddEventPublisher();
+        builder.Services.AddRepositories();
         builder.Services.AddMediator(typeof(PriceUpdatedDomainEventHandler).Assembly);
+
         builder.Services.AddGrpc(
             config =>
             {
                 config.EnableDetailedErrors = true;
                 config.Interceptors.Add<GrpcExceptionInterceptor>();
             }).AddJsonTranscoding();
-
-        builder.Services.AddSingleton<IEvP, EventPublisher>();
 
         ConfigureSwagger(builder.Services);
 

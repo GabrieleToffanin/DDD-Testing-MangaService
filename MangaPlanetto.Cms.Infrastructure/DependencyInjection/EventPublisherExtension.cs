@@ -1,4 +1,6 @@
-﻿using MangaPlanetto.ServiceDefaults;
+﻿using MangaPlanetto.Cms.Domain.Common;
+using MangaPlanetto.Cms.Infrastructure.Messaging;
+using MangaPlanetto.ServiceDefaults;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MangaPlanetto.Cms.Infrastructure.DependencyInjection;
@@ -18,7 +20,7 @@ public static class EventPublisherExtension
 
             });
 
-
+        services.AddSingleton<IEventPublisher, EventPublisher>();
 
         return services;
     }

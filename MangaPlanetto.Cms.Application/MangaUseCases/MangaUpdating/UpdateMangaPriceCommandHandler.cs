@@ -1,21 +1,24 @@
 ﻿using MangaPlanetto.Cms.Application.CommandQuery.Abstractions;
 using MangaPlanetto.Cms.Domain.Entities.Mangas;
-using MangaPlanetto.Cms.Infrastructure.DatabaseContext;
-using Microsoft.EntityFrameworkCore;
+using MangaPlanetto.Cms.Domain.Repositories;
 
 namespace MangaPlanetto.Cms.Application.MangaUseCases.MangaUpdating;
 
-public sealed class UpdateMangaPriceCommandHandler(MangaContext mangaContext)
-    : ICommandHandler<UpdateMangaPriceCommand, MangaId>
+public sealed class UpdateMangaPriceCommandHandler(
+    IMangaRepository mangaRepository) : ICommandHandler<UpdateMangaPriceCommand, MangaId>
 {
+    private readonly IMangaRepository _mangaRepository = mangaRepository;
+
     public async Task<MangaId> Handle(UpdateMangaPriceCommand request, CancellationToken cancellationToken)
     {
-        Manga? currentManga = await mangaContext.Mangas.FirstOrDefaultAsync(manga => manga.Id == request.MangaId, cancellationToken: cancellationToken);
+        MangaId? result = await this._mangaRepository.UpdateMangaPriceAsync(
+            request.MangaId,
+            request.Currency,
+            request.Value,
+            cancellationToken);
 
-        currentManga!.UpdatePrice(request.Currency, request.Value);
+        await this._mangaRepository.SaveMangaChangesAsync(cancellationToken);
 
-        await mangaContext.SaveChangesAsync(cancellationToken);
-
-        return currentManga.Id;
+        return result;
     }
 }

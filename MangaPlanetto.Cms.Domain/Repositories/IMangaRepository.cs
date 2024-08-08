@@ -1,13 +1,18 @@
 ﻿using MangaPlanetto.Cms.Domain.Entities.Mangas;
-using MangaPlanetto.Cms.Domain.ValueObjects;
 
 namespace MangaPlanetto.Cms.Domain.Repositories;
 
 public interface IMangaRepository
 {
-    Task<Manga> GetByIdAsync(MangaId id);
+    Task<MangaId> CreateMangaAsync(
+        Manga mangaToBeCreated,
+        CancellationToken cancellationToken);
 
     Task<MangaId> UpdateMangaPriceAsync(
-        Price price,
+        MangaId mangaId,
+        string currency,
+        decimal value,
         CancellationToken cancellationToken);
+
+    Task SaveMangaChangesAsync(CancellationToken cancellationToken);
 }
