@@ -14,6 +14,8 @@ internal sealed class MangaConfiguration : IEntityTypeConfiguration<Manga>
                     price.Property(p => p.CurrencyValue);
                 });
 
+        builder.OwnsMany(m => m.DomainEvents);
+
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)

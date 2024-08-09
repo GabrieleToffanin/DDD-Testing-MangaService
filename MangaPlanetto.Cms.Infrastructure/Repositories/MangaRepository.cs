@@ -26,7 +26,8 @@ internal sealed class MangaRepository(
 
     public async Task<MangaId> UpdateMangaPriceAsync(MangaId mangaId, string currency, decimal value, CancellationToken cancellationToken)
     {
-        Manga? currentManga = await this.GetMangaById(mangaId, cancellationToken);
+        Manga? currentManga = await this._dbContext.Mangas.Include(x => x.DomainEvents)
+                                .FirstOrDefaultAsync(manga => manga.Id == mangaId, cancellationToken);
 
         currentManga!.UpdatePrice(currency, value);
 
@@ -35,13 +36,13 @@ internal sealed class MangaRepository(
 
     public async Task SaveMangaChangesAsync(CancellationToken cancellationToken)
     {
-        IEnumerable<IDomainEvent> domainEvents =
-            this._dbContext.ChangeTracker.Entries<Manga>()
+        IEnumerable<DomainEvent> domainEvents =
+            this._dbContext.ChangeTracker.Entries<Entity>()
                                          .Where(e => e.Entity.DomainEvents.Any())
                                          .SelectMany(e => e.Entity.DomainEvents)
                                          .ToList();
 
-        foreach (IDomainEvent domainEvent in domainEvents)
+        foreach (DomainEvent domainEvent in domainEvents)
             await this._mediator.Publish(domainEvent, cancellationToken);
 
         await this._dbContext.SaveChangesAsync(cancellationToken);

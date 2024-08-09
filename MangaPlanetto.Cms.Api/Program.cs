@@ -7,7 +7,7 @@ using MangaPlanetto.Cms.Infrastructure.DependencyInjection;
 using MangaPlanetto.ServiceDefaults;
 using Microsoft.OpenApi.Models;
 
-internal class Program
+public class Program
 {
     public static void Main(string[] args)
     {

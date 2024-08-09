@@ -1,7 +1,6 @@
 ﻿namespace MangaPlanetto.Cms.Domain.Common;
 
-public abstract class AggregateRoot<TIdentifier> :
-    IEquatable<AggregateRoot<TIdentifier>>
+public abstract class AggregateRoot<TIdentifier> : Entity, IEquatable<AggregateRoot<TIdentifier>>
     where TIdentifier : notnull, IEquatable<TIdentifier>
 {
     protected AggregateRoot(TIdentifier identifier)
@@ -10,25 +9,6 @@ public abstract class AggregateRoot<TIdentifier> :
     }
 
     public TIdentifier Id { get; protected set; }
-
-    private List<IDomainEvent> _domainEvents = new List<IDomainEvent>();
-
-    public IEnumerable<IDomainEvent> DomainEvents => this._domainEvents;
-
-    protected void AddDomainEvent(IDomainEvent domainEvent)
-    {
-        this._domainEvents.Add(domainEvent);
-    }
-
-    protected void RemoveDomainEvent(IDomainEvent domainEvent)
-    {
-        this._domainEvents.Remove(domainEvent);
-    }
-
-    public void ClearDomainEvents()
-    {
-        this._domainEvents.Clear();
-    }
 
     public override bool Equals(object obj)
     {
