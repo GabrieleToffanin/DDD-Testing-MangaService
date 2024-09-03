@@ -1,6 +1,9 @@
 ﻿using Grpc.Net.Client;
 using MangaPlanetto.Cms.Api;
+using MangaPlanetto.Cms.Domain.Entities.Mangas;
+using MangaPlanetto.Cms.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MangaPlanetto.Cms.IntegrationTests.GrpcServicesTest.MangaTesting;
 
@@ -9,7 +12,8 @@ public sealed class MangaServiceIntegrationTest : IClassFixture<WebApplicationFa
     private readonly WebApplicationFactory<Program> _factory;
     private readonly GrpcChannel _channel;
 
-    public MangaServiceIntegrationTest(WebApplicationFactory<Program> factory)
+    public MangaServiceIntegrationTest(
+        WebApplicationFactory<Program> factory)
     {
         _factory = factory;
         HttpClient client = _factory.CreateDefaultClient();
@@ -20,12 +24,20 @@ public sealed class MangaServiceIntegrationTest : IClassFixture<WebApplicationFa
     public async Task WhenPriceUpdateRequested_OnExistingManga_PriceIsUpdated()
     {
         // Arrange
-        Manga.MangaClient client = new(this._channel);
-        string mangaId = Guid.NewGuid().ToString();
+        Api.Manga.MangaClient client = new(this._channel);
+
+        CreateMangaRequest createManga = new()
+        {
+            Title = "Manga Title",
+            Price = new GrpcPrice()
+            {
+                Amount = 5.0F,
+                Currency = "USD",
+            },
+        };
 
         UpdateMangaPriceRequest updatePrice = new()
         {
-            MangaId = mangaId,
             Price = new()
             {
                 Currency = "USD",
@@ -34,9 +46,15 @@ public sealed class MangaServiceIntegrationTest : IClassFixture<WebApplicationFa
         };
 
         // Act
-        var response = await client.UpdateMangaPriceAsync(updatePrice);
+        var response = await client.CreateMangaAsync(createManga);
+
+        updatePrice.MangaId = response.MangaId;
+
+        var updated = await client.UpdateMangaPriceAsync(updatePrice);
+
+        var savedInDb = await this._factory.Services.GetRequiredService<IMangaRepository>().GetMangaAsync(MangaId.ParseFrom(response.MangaId), CancellationToken.None);
 
         // Assert
-        Assert.Equal(mangaId, response.MangaId);
+        Assert.Equal(10, savedInDb.Price.Value);
     }
 }

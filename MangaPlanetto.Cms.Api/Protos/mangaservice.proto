@@ -16,20 +16,30 @@ service Manga{
 	rpc CreateManga(CreateMangaRequest) returns (MangaCreatedResponse)
 	{
 		option (google.api.http) = {
-		  post: "/v1/updatemangaprice"
+		  post: "/v1/createmanga"
 		  body: "*"
 		};
 	}
 	rpc UpdateMangaPrice(UpdateMangaPriceRequest) returns (UpdatedMangaResponse)
 	{
 		option (google.api.http) = {
-		  post: "/v1/createmanga"
+		  post: "/v1/updatemangaprice"
 		  body: "*"
+		};
+	}
+	rpc DeleteManga(DeleteMangaRequest) returns (Empty)
+	{
+		option (google.api.http) = {
+		  delete: "/v1/manga/{manga_id}"
 		};
 	}
 } 
 
 message GetMangaRequest{
+	string manga_id = 1;
+}
+
+message DeleteMangaRequest{
 	string manga_id = 1;
 }
 
@@ -60,4 +70,8 @@ message UpdatedMangaResponse{
 message GrpcPrice{
 	float amount = 1;
 	string currency = 2;
+}
+
+message Empty{
+
 }

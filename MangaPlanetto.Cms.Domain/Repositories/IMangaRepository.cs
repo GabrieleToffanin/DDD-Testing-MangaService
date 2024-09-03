@@ -4,6 +4,10 @@ namespace MangaPlanetto.Cms.Domain.Repositories;
 
 public interface IMangaRepository
 {
+    Task<Manga> GetMangaAsync(
+        MangaId mangaId,
+        CancellationToken cancellationToken);
+
     Task<MangaId> CreateMangaAsync(
         Manga mangaToBeCreated,
         CancellationToken cancellationToken);

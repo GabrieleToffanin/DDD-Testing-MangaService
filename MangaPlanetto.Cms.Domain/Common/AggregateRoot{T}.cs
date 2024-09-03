@@ -15,7 +15,7 @@ public abstract class AggregateRoot<TIdentifier> : Entity, IEquatable<AggregateR
         if (obj == null || this.GetType() != obj.GetType())
             return false;
 
-        AggregateRoot<TIdentifier> other = (AggregateRoot<TIdentifier>)obj;
+        AggregateRoot<TIdentifier> other = obj as AggregateRoot<TIdentifier>;
         return this.Equals(other);
     }
 

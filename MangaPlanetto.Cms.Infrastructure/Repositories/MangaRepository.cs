@@ -53,4 +53,11 @@ internal sealed class MangaRepository(
         return await this._dbContext.Mangas
             .FirstOrDefaultAsync(manga => manga.Id == mangaId, cancellationToken);
     }
+
+    public async Task<Manga> GetMangaAsync(MangaId mangaId, CancellationToken cancellationToken)
+    {
+        Manga? manga = await this.GetMangaById(mangaId, cancellationToken);
+
+        return manga;
+    }
 }
